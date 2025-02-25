@@ -79,7 +79,7 @@ img {
 }
 
 .section-subtitle {
-  font-size: var(--h3-font-size);
+  font-size: var(--normal-font-size);
   color: var(--text-color-light);
   margin-bottom: 2.4rem;
 }

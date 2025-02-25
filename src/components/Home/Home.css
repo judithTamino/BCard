@@ -4,3 +4,24 @@
   justify-content: center;
   row-gap: 4rem;
 }
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: 2.4rem;
+}
+
+.page-prev,
+.page-next {
+  background-color: var(--first-color);
+  padding: .4rem .8rem;
+  color: var(--body-color);
+  border-radius: .5rem;
+}
+
+.page-active {
+  background-color: var(--secondary-color);
+  padding: .4rem .8rem;
+  border-radius: .5rem;
+}
