@@ -1,13 +1,17 @@
+/*=============== GOOGLE FONTS ===============*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/*=============== REMIX ICON ===============*/
+@import 'remixicon/fonts/remixicon.css';
 
 :root {
   /*========== colors ==========*/
-  --first-color: #2F27CE;
-  --first-color-alt: #443DFF;
-  --secondary-color: #DDDBFF;
-  --text-color: #040316;
-  --text-color-light: #363545;
-  --body-color: #FBFBFE;
+  --first-color: #9747ff;
+  --first-color-alt: #3C1C66;
+  --secondary-color: #D4B3FF;
+  --text-color: #0e0617;
+  --text-color-light: #272030;
+  --body-color: #F5EDFF;
   /*========== font & typography ==========*/
   --body-font: "Poppins", serif;
   --h1-font-size: 3.2rem;
@@ -52,10 +56,13 @@ button {
   border: none;
 }
 
-a {
-  text-decoration: none;
+ul {
+  list-style: none;
 }
 
+img {
+  max-width: 100%;
+}
 /*=============== REUSABLE CSS CLASSES ===============*/
 .container {
   max-width: 1024px;
@@ -63,7 +70,7 @@ a {
 }
 
 .section {
-  padding: 4.8rem 0 2.4rem;
+  padding: 8rem 0 2.4rem;
 }
 
 .section-title {
@@ -79,5 +86,14 @@ a {
 
 .grid {
   display: grid;
-  gap: 2.4rem;
 }
+
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: var(--body-color);
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+

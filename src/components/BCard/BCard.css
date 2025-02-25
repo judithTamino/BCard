@@ -1,0 +1,36 @@
+.card {
+  background-color: #F1E5FF;
+  padding: 1.2em;
+  overflow: hidden;
+  border-radius: .2rem;
+}
+
+.card-img,
+.card-subtitle {
+  margin-bottom: 2.4rem;
+}
+
+.card-img {
+  height: 150px;
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.card-details {
+  display: flex;
+  flex-direction: column;
+  row-gap: .8rem;
+  font-size: var(--small-font-size);
+}
+
+.card-details li span {
+  color: var(--text-color-light);
+  margin-left: .8rem;
+}
+
+.card-details li i {
+  font-size: var(--normal-font-size);
+  background-color: var(--secondary-color);
+  padding: .2rem;
+  border-radius: 50%;
+}

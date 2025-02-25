@@ -1,0 +1,6 @@
+.home-cards {
+  padding-top: 2.4rem;
+  grid-template-columns: 240px;
+  justify-content: center;
+  row-gap: 4rem;
+}
