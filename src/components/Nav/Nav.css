@@ -9,12 +9,16 @@
 .nav-logo {
   font-weight: var(--font-semi-bold);
   text-decoration: none;
+  margin-right: 2.4rem;
 }
 
 .nav-close {
   font-size: 1.8rem;
   color: var(--text-color);
   cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
 }
 
 .nav-toggle {
@@ -26,10 +30,11 @@
   justify-content: center;
   border-radius: 50%;
   color: var(--body-color);
+  cursor: pointer;
 }
 
 /* navigation for mobile devices  */
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 960px) {
   .nav-menu {
     position: fixed;
     top: -100%;
@@ -56,12 +61,6 @@
   text-decoration: none;
 }
 
-.nav-close {
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
-}
-
 /* show menu  */
 .show-menu {
   top: 0;
@@ -69,7 +68,7 @@
 
 .nav-actions {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   gap: 1.2rem;
   margin-top: 8rem;

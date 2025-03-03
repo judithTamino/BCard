@@ -1,5 +1,5 @@
 /*=============== GOOGLE FONTS ===============*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 /*=============== REMIX ICON ===============*/
 @import 'remixicon/fonts/remixicon.css';
@@ -8,14 +8,15 @@
   /*========== colors ==========*/
   --first-color: #9747ff;
   --first-color-alt: #3C1C66;
+  --first-color-light: #F1E7FF;
   --secondary-color: #D4B3FF;
   --text-color: #0e0617;
-  --text-color-light: #272030;
+  --text-color-light: #57515e;
   --body-color: #F5EDFF;
   /*========== font & typography ==========*/
-  --body-font: "Poppins", serif;
+  --body-font: "Rubik", serif;
   --h1-font-size: 3.2rem;
-  --h2-font-size: 2.8rem;
+  --h2-font-size: 2.4rem;
   --h3-font-size: 1.8rem;
   --normal-font-size: 1.6rem;
   --small-font-size: 1.4rem;
@@ -23,6 +24,27 @@
   --font-regular: 400;
   --font-medium: 500;
   --font-semi-bold: 600;
+}
+
+@media screen and (min-width: 960px) {
+  :root {
+    --h1-font-size: 5.6rem;
+    --h2-font-size: 4rem;
+    --h3-font-size: 2.4rem;
+    --normal-font-size: 1.8rem;
+    --small-font-size: 1.6rem;
+  }
+}
+
+/*========== VARIABLES DARK THEME ==========*/
+body.dark-theme {
+  --first-color: #5000B8;
+  --first-color-alt: #21004D;
+  --first-color-light: #0B001A;
+  --secondary-color: #BA9BE4;
+  --text-color: #F4EFFB;
+  --text-color-light: #dcd7e2;
+  --body-color: #090014;
 }
 
 /*=============== BASE ===============*/
