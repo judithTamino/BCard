@@ -9,7 +9,6 @@ interface BCardProps {
 const BCard: FunctionComponent<BCardProps> = ({ card }) => {
 
   const addDefaultImg = (event:any) => {
-    // event.preventDefault();
     event.target.src = './defualt-image.png';
   } 
 
@@ -23,12 +22,12 @@ const BCard: FunctionComponent<BCardProps> = ({ card }) => {
 
         <ul className='card-details'>
           <li className='card-list'>
-            <i className='ri-phone-line'></i>
+            <i className='ri-phone-fill'></i>
             <span className='card-txt'>{card.phone}</span>
           </li>
 
           <li className='card-list'>
-            <i className='ri-map-pin-line'></i>
+            <i className='ri-map-pin-2-fill'></i>
             <span className='card-txt'>
               {`${card.address.street} ${card.address.houseNumber} ${card.address.city}, ${card.address.country}`}
             </span>

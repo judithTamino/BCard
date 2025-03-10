@@ -1,23 +1,21 @@
 import './Nav.css';
-import { FunctionComponent, useContext, useState } from 'react';
+import { FunctionComponent, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { SearchContext } from '../../context/SearchContext';
 import LightDarkMode from '../LightDarkMode/LightDarkMode';
+import SearchInput from '../SearchInput/SearchInput';
 
 interface NavProps {}
 
 const Nav: FunctionComponent<NavProps> = () => {
   const [showNav, setShowNav] = useState<boolean>(false);
-  const [, setSearchData] = useContext(SearchContext);
-  
+
   const handleShowNavbar = () => {
     setShowNav(!showNav);
   };
 
   const closeNavbar = () => {
     setShowNav(false);
-  }
-
+  };
 
   return (
     <nav className='nav container'>
@@ -38,9 +36,9 @@ const Nav: FunctionComponent<NavProps> = () => {
           <NavLink className='nav-login' to={'/'} onClick={closeNavbar}>
             Log in
           </NavLink>
-          <NavLink className='nav-signup' to={'/'} onClick={closeNavbar}>
+          <NavLink className='nav-signup' to={'/signup'} onClick={closeNavbar}>
             Sign up
-          </NavLink >
+          </NavLink>
         </div>
 
         {/* <-- close button --> */}
@@ -50,20 +48,12 @@ const Nav: FunctionComponent<NavProps> = () => {
       </div>
 
       {/* <-- search bar --> */}
-      <div className='nav-search'>
-        <div className='search-form'>
-          <input
-            type='search'
-            className='serch-input'
-            placeholder='Search...'
-            onChange={(e) => setSearchData(e.target.value)}
-          />
-        </div>
-      </div>
+      <SearchInput/>
+  
+      {/* <-- light / dark mode btn --> */}
+      <LightDarkMode />
 
-      <LightDarkMode/>
-
-      {/* <-- toggle button --> */}
+      {/* <-- toggle btn --> */}
       <div className='nav-toggle' onClick={handleShowNavbar}>
         <i className='ri-menu-line'></i>
       </div>

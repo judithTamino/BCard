@@ -1,10 +1,10 @@
-import { FunctionComponent, useContext, useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import { Card } from '../../interfaces/cards/Card';
 import { getAllCards } from '../../services/cardService';
 import BCard from '../BCard/BCard';
 import './Home.css';
-import ReactPaginate from 'react-paginate';
-import { SearchContext } from '../../context/SearchContext';
+import useSearch from '../../context/SearchContext';
+import Pagination from '../Pagination/Pagination';
 
 interface HomeProps {}
 
@@ -12,7 +12,7 @@ const Home: FunctionComponent<HomeProps> = () => {
   const [cards, setCards] = useState<Card[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [cardsPerPage] = useState<number>(3);
-  const [searchData] = useContext(SearchContext);
+  const { searchTerm } = useSearch();
 
   useEffect(() => {
     getAllCards()
@@ -25,7 +25,7 @@ const Home: FunctionComponent<HomeProps> = () => {
   const filterCards = cards.filter((card) =>
     card.title
       .toLocaleLowerCase()
-      .includes(searchData?.toLocaleLowerCase() as string)
+      .includes(searchTerm?.toLocaleLowerCase() as string)
   );
   const lastCardIndex: number = currentPage * cardsPerPage;
   const firsCardIndex: number = lastCardIndex - cardsPerPage;
@@ -46,29 +46,22 @@ const Home: FunctionComponent<HomeProps> = () => {
           </p>
         </div>
         {filterCards.length > 0 ? (
-          <div className='home-cards grid'>
-            {currentCards.map((card: Card) => (
-              <BCard key={card._id} card={card} />
-            ))}
-          </div>
+          <>
+            <div className='home-cards grid'>
+              {currentCards.map((card: Card) => (
+                <BCard key={card._id} card={card} />
+              ))}
+            </div>
+            
+            <Pagination
+              cardsLenght={filterCards.length}
+              cardsPerPage={cardsPerPage}
+              handlePageChange={handlePageChange}
+            />
+          </>
         ) : (
           <p className='home-not-found'>No Results Found</p>
         )}
-
-        <ReactPaginate
-          previousLabel={<i className='ri-arrow-left-wide-line'></i>}
-          previousClassName='page-prev'
-          nextLabel={<i className='ri-arrow-right-wide-line'></i>}
-          nextClassName='page-next'
-          breakLabel={'...'}
-          breakClassName='page-break'
-          pageCount={Math.ceil(filterCards.length / cardsPerPage)}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={3}
-          onPageChange={handlePageChange}
-          containerClassName={'pagination'}
-          activeClassName={'page-active'}
-        />
       </div>
     </section>
   );
