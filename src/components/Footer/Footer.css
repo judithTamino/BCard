@@ -1,0 +1,97 @@
+.footer {
+  padding-block: 4rem;
+  background-color: var(--first-color-light);
+}
+
+.footer-content {
+  row-gap: 2.4rem;
+}
+
+.footer-logo {
+  display: inline-block;
+  color: var(--first-color-alt);
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-medium);
+  background-color: var(--first-color-light);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.footer-link {
+  color: var(--text-color);
+  transition: all .4s;
+}
+
+.footer-link:hover,
+.footer-link:focus {
+  color: var(--first-color);
+}
+
+.footer-group,
+.footer-contact {
+  display: flex;
+}
+
+.footer-group {
+  margin-top: 4rem;
+  flex-direction: column;
+  row-gap: 1.6rem;
+}
+
+.footer-contact {
+  column-gap: 2.4rem;
+}
+
+.footer-contact--link {
+  color: var(--first-color);
+  font-size: 1.8rem;
+  transition: all .4s;
+}
+
+.footer-contact--link:hover {
+  color: var(--first-color-alt);
+  transform: translateY(-.25rem);
+}
+
+.footer-copy {
+  font-size: var(--small-font-size);
+  color: var(--text-color);
+  text-align: center;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* for medium devices */
+@media screen and (min-width: 720px) {
+  .footer-content {
+    grid-template-columns: repeat(2, max-content);
+    align-items: center;
+    column-gap: 4rem;
+  }
+
+  .footer-group {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footer-copy {
+    order: -1;
+  }
+}
+
+/* for large devices */
+@media screen and (min-width: 1023px) {
+  .footer {
+    padding-block: 8rem 4.8rem;
+  }
+
+  .footer-contact {
+    column-gap: 3.2rem;
+  }
+
+  .footer-contact--link {
+    font-size: 2.4rem;
+  }
+}

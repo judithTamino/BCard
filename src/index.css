@@ -41,7 +41,7 @@
 
 /*========== VARIABLES DARK THEME ==========*/
 body.dark-theme {
-  --first-color: rgb(80, 0, 184);
+  --first-color: #5000b8;
   --first-color-alt: #B99BE4;
   --first-color-light: #0D001C;
   --secondary-color: #21004D;
@@ -87,6 +87,11 @@ button {
   border: none;
 }
 
+button {
+  cursor: pointer;
+  background-color: transparent;
+}
+
 ul {
   list-style: none;
 }
@@ -97,4 +102,8 @@ img {
 
 h1, h2, h3 {
   font-weight: var(--font-regular);
+}
+
+a {
+  text-decoration: none;
 }

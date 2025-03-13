@@ -11,7 +11,7 @@ interface HomeProps {}
 const Home: FunctionComponent<HomeProps> = () => {
   const [cards, setCards] = useState<Card[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [cardsPerPage] = useState<number>(3);
+  const [cardsPerPage] = useState<number>(4);
   const { searchTerm } = useSearch();
 
   useEffect(() => {

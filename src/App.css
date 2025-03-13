@@ -9,19 +9,18 @@
 }
 
 .section-title {
-  font-size: var(--h1-font-size);
+  font-size: var(--h3-font-size);
   font-weight: var(--font-regular);
   line-height: 7rem;
-  background-image: linear-gradient(120deg, var(--first-color),#9733EE 100%);
-  background-repeat: no-repeat;
-  background-size: 45% 0.2em;
-  background-position: 0 75%;
-  transition: background-size 0.25s ease-in;
+  color: var(--first-color);
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .section-subtitle {
   color: var(--text-color-light);
   margin-bottom: 2.4rem;
+  text-align: center;
 }
 
 .grid {
@@ -74,5 +73,17 @@
   background-color: transparent;
   border: 2px solid var(--first-color);
   color: var(--first-color);
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* for large devices */
+@media screen and (min-width: 1050px) {
+  .container {
+    margin-inline: auto;
+  }
+
+  .section {
+    padding: 11.2rem 3.2rem;
+  }
 }
 

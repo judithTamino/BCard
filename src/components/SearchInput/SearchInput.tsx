@@ -7,7 +7,7 @@ interface SearchInputProps {}
 const SearchInput: FunctionComponent<SearchInputProps> = () => {
   const {setSearchTerm} = useSearch(); 
   return (
-    <div className='search-container container'>
+    <div className='search-container'>
       <div className='search-form'>
         <input type='search' className='input serch-input'  
         onChange={(e) => setSearchTerm(e.target.value)} placeholder='search'/>

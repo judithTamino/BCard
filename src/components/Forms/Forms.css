@@ -13,23 +13,41 @@
 }
 
 .address-container {
-  grid-template-columns: 2fr 1.5fr;
+  grid-template-columns: 2fr 1fr;
   gap: .8rem;
 }
 
 .input-group {
+  width: 100%;
   margin-top: 1.6rem;
   line-height: 2rem;
 }
 
 .form-btns-container {
-  margin-top: 2.4rem;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.6rem;
+  margin-top: 6.2rem;
+  grid-template-columns: repeat(2, max-content);
+  justify-items: center;
 }
 
 .btn-back {
   background-color: transparent;
   border: 2px solid var(--first-color);
   color: var(--first-color);
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* for medium devices */
+@media screen and (min-width: 540px) {
+  .form-container {
+    margin-inline: auto;
+  }
+
+  .form-btns-container {
+    justify-items: start;
+    column-gap: 1.2rem;
+  }
+
+  .fullname-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

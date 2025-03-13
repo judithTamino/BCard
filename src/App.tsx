@@ -12,6 +12,7 @@ import { SearchProvider } from './context/SearchContext';
 import { Theme, ThemeProvider } from './context/ThemeContext';
 
 import { ToastContainer } from 'react-toastify';
+import Footer from './components/Footer/Footer';
 
 
 
@@ -49,6 +50,7 @@ function App() {
                 <Route path='/login' element={<Login/>} />
               </Routes>
             </Suspense>
+            <Footer/>
           </Router>
         </SearchProvider>
       </ThemeProvider>

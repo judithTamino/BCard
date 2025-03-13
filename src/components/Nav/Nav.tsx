@@ -30,16 +30,24 @@ const Nav: FunctionComponent<NavProps> = () => {
               About
             </NavLink>
           </li>
-        </ul>
 
-        <div className='nav-actions'>
-          <NavLink className='btn nav-login' to={'/login'} onClick={closeNavbar}>
-            Log in
-          </NavLink>
-          <NavLink className='btn nav-signup' to={'/signup'} onClick={closeNavbar}>
-            Sign up
-          </NavLink>
-        </div>
+          <li className='nav-item nav-btns'>
+            <NavLink
+              className='btn btn-secondary'
+              to={'/login'}
+              onClick={closeNavbar}
+            >
+              Log in
+            </NavLink>
+            <NavLink
+              className='btn'
+              to={'/signup'}
+              onClick={closeNavbar}
+            >
+              Sign up
+            </NavLink>
+          </li>
+        </ul>
 
         {/* <-- close button --> */}
         <div className='nav-close' onClick={handleShowNavbar}>
@@ -47,15 +55,17 @@ const Nav: FunctionComponent<NavProps> = () => {
         </div>
       </div>
 
-      {/* <-- search bar --> */}
-      <SearchInput/>
-  
-      {/* <-- light / dark mode btn --> */}
-      <LightDarkMode />
+      <div className='nav-actions'>
+        {/* <-- search bar --> */}
+        <SearchInput />
 
-      {/* <-- toggle btn --> */}
-      <div className='nav-toggle' onClick={handleShowNavbar}>
-        <i className='ri-menu-line'></i>
+        {/* <-- light / dark mode btn --> */}
+        <LightDarkMode />
+
+        {/* <-- toggle btn --> */}
+        <div className='nav-toggle' onClick={handleShowNavbar}>
+          <i className='ri-menu-line'></i>
+        </div>
       </div>
     </nav>
   );

@@ -8,6 +8,7 @@ import { login } from '../../services/userService';
 import { useNavigate } from 'react-router-dom';
 import { errorMsg } from '../../services/feedbackService';
 
+
 interface LoginProps {}
 
 const Login: FunctionComponent<LoginProps> = () => {
@@ -33,7 +34,7 @@ const Login: FunctionComponent<LoginProps> = () => {
           onSubmit={handleSubmit}
         >
           {({ dirty, isValid, resetForm }) => (
-            <Form>
+            <Form className='login-container container'>
               <div className='form-data'>
                 <div className='input-group'>
                   <TextInput

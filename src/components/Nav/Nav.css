@@ -1,4 +1,3 @@
-/*=============== HEADER & NAV ===============*/
 .nav {
   height: 6.4rem;
   display: flex;
@@ -11,6 +10,7 @@
   font-weight: var(--font-semi-bold);
   text-decoration: none;
   margin-right: 2.4rem;
+  color: var(--first-color);
 }
 
 .nav-close,
@@ -46,11 +46,12 @@
   display: flex;
   flex-direction: column;
   row-gap: 4rem;
+  align-items: center;
 }
 
 .nav-link {
   position: relative;
-  color: var(--first-color-alt);
+  color: var(--first-color);
   font-weight: var(--font-medium);
   font-size: 2rem;
   text-decoration: none;
@@ -65,11 +66,44 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 8rem;
 }
 
-.nav-login {
-  background-color: transparent;
-  color: var(--first-color-alt);
-  font-weight: var(--font-medium);
+.nav-btns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  justify-content: center;
 }
+
+/*=============== BREAKPOINTS ===============*/
+/* for large devices */
+@media screen and (min-width: 961px) {
+  .nav {
+    height: 8.8rem;
+    position: relative;
+    justify-content:flex-start;
+    column-gap: 3.2rem;
+  }
+
+  .nav-close,
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    column-gap: 6.4rem;
+  }
+
+  .nav-btns {
+    position: absolute;
+    right: 0;
+  }
+
+  .nav-actions {
+    gap: 2.4rem;
+  }
+}
+
+
+
