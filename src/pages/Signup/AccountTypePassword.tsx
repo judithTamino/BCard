@@ -1,31 +1,32 @@
 import { FunctionComponent } from 'react';
 import { Formik, Form } from 'formik';
-
+// CSS
+import '../../components/Forms/Forms.css';
 // Components
-import TextInput from '../TextInput/TextInput';
+import TextInput from '../../components/TextInput/TextInput';
 // Interface
 import { ISignup } from '../../interfaces/forms/ISignup';
+import CheckboxInput from '../../components/CheckboxInput/CheckboxInput';
 
-interface FormImageProps {
+interface AccountTypePasswordProps {
+  next: (newData: ISignup, finish:boolean) => void;
+  prev: (newData: ISignup) => void;
   data: ISignup;
-  next: (newData: ISignup) => void;
-  prev: (newData:ISignup) => void;
   schema: any;
 }
 
-const FormImage: FunctionComponent<FormImageProps> = ({
-  data,
+const AccountTypePassword: FunctionComponent<AccountTypePasswordProps> = ({
   next,
   prev,
+  data,
   schema,
 }) => {
   const handleSubmit = (values: ISignup) => {
-    next(values);
+    next(values, true);
   };
-
   return (
     <div className='form-container'>
-      <h3 className='form-title'>Upload Image</h3>
+      <h3 className='form-title'>Password & Bussines Acount</h3>
 
       <Formik
         initialValues={data}
@@ -37,20 +38,17 @@ const FormImage: FunctionComponent<FormImageProps> = ({
             <div className='form-data'>
               <div className='input-group'>
                 <TextInput
-                  label='Url'
-                  name='image-url'
+                  label='Password'
+                  name='password'
                   type='text'
-                  required={false}
+                  required={true}
                 />
               </div>
 
-              <div className='input-group'>
-                <TextInput
-                  label='Description'
-                  name='image-alt'
-                  type='text'
-                  required={false}
-                />
+              <div className='checkbox-group'>
+                <CheckboxInput name='is_business'>
+                  Is Business Account?
+                </CheckboxInput>
               </div>
             </div>
 
@@ -63,7 +61,7 @@ const FormImage: FunctionComponent<FormImageProps> = ({
                 Back
               </button>
               <button className='btn' type='submit'>
-                next
+                signup
               </button>
             </div>
           </Form>
@@ -73,4 +71,4 @@ const FormImage: FunctionComponent<FormImageProps> = ({
   );
 };
 
-export default FormImage;
+export default AccountTypePassword;

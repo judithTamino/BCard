@@ -1,0 +1,14 @@
+.form-label {
+  display: block;
+  margin-bottom: .4rem;
+}
+
+.form-error {
+  color: var(--error-color);
+  font-size: var(--small-font-size);
+}
+
+.input-required {
+  border: 2px solid var(--border-color);
+  box-shadow: 0 0 0 2px var(--border-color-shadow);
+}

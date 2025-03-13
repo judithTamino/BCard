@@ -1,10 +1,10 @@
 import { FunctionComponent, useEffect, useState } from 'react';
 import { Card } from '../../interfaces/cards/Card';
 import { getAllCards } from '../../services/cardService';
-import BCard from '../BCard/BCard';
+import BCard from '../../components/BCard/BCard';
 import './Home.css';
 import useSearch from '../../context/SearchContext';
-import Pagination from '../Pagination/Pagination';
+import Pagination from '../../components/Pagination/Pagination';
 
 interface HomeProps {}
 

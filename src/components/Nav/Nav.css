@@ -68,24 +68,8 @@
   margin-top: 8rem;
 }
 
-.nav-login,
-.nav-signup {
-  text-decoration: none;
-}
-
 .nav-login {
+  background-color: transparent;
   color: var(--first-color-alt);
   font-weight: var(--font-medium);
-}
-
-.nav-signup {
-  background-color: var(--first-color);
-  padding: .8rem 3.2rem;
-  border-radius: .5rem;
-  color: var(--body-color);
-}
-
-.nav-signup:hover {
-  transform: translate(0, -3px);
-  box-shadow: 0 2rem 8rem -1rem var(--first-color);
 }

@@ -1,0 +1,35 @@
+.form-container {
+  margin-block: 3.2rem;
+  max-width: 500px;
+}
+
+.form-title {
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-light);
+}
+
+.fullname-container {
+  column-gap: .8rem;
+}
+
+.address-container {
+  grid-template-columns: 2fr 1.5fr;
+  gap: .8rem;
+}
+
+.input-group {
+  margin-top: 1.6rem;
+  line-height: 2rem;
+}
+
+.form-btns-container {
+  margin-top: 2.4rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+}
+
+.btn-back {
+  background-color: transparent;
+  border: 2px solid var(--first-color);
+  color: var(--first-color);
+}

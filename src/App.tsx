@@ -1,15 +1,22 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './components/Home/Home';
-import Nav from './components/Nav/Nav';
 import { lazy, Suspense, useEffect, useState } from 'react';
+//COMPONENTS
+import Nav from './components/Nav/Nav';
+//PAGES
+import Home from './pages/Home/Home';
+import Signup from './pages/Signup/Signup';
+import Login from './pages/Login/Login';
+//CONTEXT
 import { SearchProvider } from './context/SearchContext';
 import { Theme, ThemeProvider } from './context/ThemeContext';
-import Signup from './components/Forms/Signup/Signup';
+
+import { ToastContainer } from 'react-toastify';
 
 
 
-const About = lazy(() => import('./components/About/About'));
+
+const About = lazy(() => import('./pages/About/About'));
 
 function App() {
   const [theme, setTheme] = useState<Theme>('light');
@@ -26,6 +33,7 @@ function App() {
 
   return (
     <>
+    <ToastContainer/>
       <ThemeProvider value={{ theme, changeTheme }}>
         <SearchProvider value={{searchTerm, setSearchTerm}}>
           <Router>
@@ -38,6 +46,7 @@ function App() {
                 <Route path='/' element={<Home />} />
                 <Route path='/about' element={<About />} />
                 <Route path='/signup' element={<Signup/>} />
+                <Route path='/login' element={<Login/>} />
               </Routes>
             </Suspense>
           </Router>

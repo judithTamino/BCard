@@ -6,13 +6,15 @@
 
 :root {
   /*========== colors ==========*/
-  --first-color: #9747FF;
-  --first-color-alt: #3A1B64;
+  --first-color: #9747ff;
+  --first-color-alt: #3a1c63;
   --first-color-light: #F0E3FF;
   --secondary-color: #D4B3FF;
   --text-color: #090410;
   --body-color: #F4EBFF;
-  /* #B9A6D0 */
+  --border-color:rgba(151, 71, 255, .4);
+  --border-color-shadow: rgb(151 71 255 / 10%);
+  --error-color: #E62D2D;
   /*========== font & typography ==========*/
   --body-font: "Fredoka", sans-serif;
   --h1-font-size: 3.2rem;
@@ -39,12 +41,15 @@
 
 /*========== VARIABLES DARK THEME ==========*/
 body.dark-theme {
-  --first-color: #5000B8;
+  --first-color: rgb(80, 0, 184);
   --first-color-alt: #B99BE4;
   --first-color-light: #0D001C;
   --secondary-color: #21004D;
   --text-color: #F4EFFB;
   --body-color: #090014;
+  --border-color:rgba(80, 0, 184, .4);
+  --border-color-shadow: rgb(80 0 184 / 10%);
+  --error-color: #D21919;
 }
 
 /*=============== BASE ===============*/
@@ -90,6 +95,6 @@ img {
   max-width: 100%;
 }
 
-h1, h3 {
+h1, h2, h3 {
   font-weight: var(--font-regular);
 }

@@ -33,10 +33,10 @@ const Nav: FunctionComponent<NavProps> = () => {
         </ul>
 
         <div className='nav-actions'>
-          <NavLink className='nav-login' to={'/'} onClick={closeNavbar}>
+          <NavLink className='btn nav-login' to={'/login'} onClick={closeNavbar}>
             Log in
           </NavLink>
-          <NavLink className='nav-signup' to={'/signup'} onClick={closeNavbar}>
+          <NavLink className='btn nav-signup' to={'/signup'} onClick={closeNavbar}>
             Sign up
           </NavLink>
         </div>

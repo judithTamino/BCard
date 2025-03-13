@@ -1,5 +1,5 @@
-import { Image } from "../Image";
-import { Address } from "./CardAddress";
+import { ICardImage } from "./CardImage";
+import { IAddress } from "../IAddress";
 
 export interface Card {
   _id?: string;
@@ -9,8 +9,8 @@ export interface Card {
   phone: string;
   email: string;
   web?: string;
-  image: Image;
-  address: Address;
+  image: ICardImage;
+  address: IAddress;
   bizNumber?: number;
   likes?: string[];
   user_id?: string;
