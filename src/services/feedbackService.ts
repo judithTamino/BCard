@@ -9,7 +9,7 @@ export const sucessMsg = (msg:string) => {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    theme: "light",
+    theme: "colored",
     transition: Bounce,
   });
 }
@@ -23,7 +23,7 @@ export const errorMsg = (msg:string) => {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    theme: "light",
+    theme: "colored",
     transition: Bounce,
   });
 }

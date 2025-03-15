@@ -1,17 +1,15 @@
 import { FunctionComponent } from 'react';
 import { Card } from '../../interfaces/cards/Card';
 import './BCard.css';
+import { addDefaultImg } from '../../utils/addDefaultImg';
+import useAuto from '../../context/AuthContext';
 
 interface BCardProps {
   card: Card;
 }
 
 const BCard: FunctionComponent<BCardProps> = ({ card }) => {
-
-  const addDefaultImg = (event:any) => {
-    event.target.src = './defualt-image.png';
-  } 
-
+  const {isLoggedIn} = useAuto();
   return (
     <article className='card'>
       <img src={card.image.url} alt={card.image.alt} className='card-img' onError={addDefaultImg}/>

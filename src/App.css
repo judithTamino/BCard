@@ -30,10 +30,11 @@
 .header {
   position: fixed;
   width: 100%;
-  background-color: var(--body-color);
+  background-color: var(--first-color-light);
   top: 0;
   left: 0;
   z-index: 100;
+  box-shadow: 0 1px 4px hsla(228, 45%, 15%, .1);
 }
 
 .input {
@@ -49,7 +50,7 @@
 .btn {
   text-decoration: none;
   background-color: var(--first-color);
-  padding: .8rem 3.2rem;
+  padding: .4rem .8rem;
   border-radius: .5rem;
   color: #fff;
   cursor: pointer;

@@ -9,6 +9,7 @@ const SearchInput: FunctionComponent<SearchInputProps> = () => {
   return (
     <div className='search-container'>
       <div className='search-form'>
+      <i className="ri-search-line"></i>
         <input type='search' className='input serch-input'  
         onChange={(e) => setSearchTerm(e.target.value)} placeholder='search'/>
       </div>

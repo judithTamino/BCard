@@ -1,0 +1,32 @@
+.nav-btns,
+.btn-icon {
+  display: flex;
+  align-items: center;
+}
+
+.btn-icon {
+  background-color: transparent;
+  color: var(--first-color);
+}
+
+.btn-icon:hover {
+  background-color: var(--first-color-light);
+  box-shadow: none;
+}
+
+.btn-icon i {
+  font-size: var(--h3-font-size);
+}
+
+.nav-btns {
+  column-gap: 2.4rem;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* for large devices */
+@media screen and (min-width: 961px) {
+  .nav-btns {
+    position: absolute;
+    right: 0;
+  }
+}

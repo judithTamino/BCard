@@ -1,0 +1,9 @@
+.theme-container {
+  cursor: pointer;
+  transition: all ease .5s;
+}
+
+.theme-container:hover  {
+  color: var(--first-color);
+  transform: translate(0, -3px);
+}

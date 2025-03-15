@@ -11,10 +11,13 @@ import { userSchema } from '../../schemas/userSchema';
 import { validUser } from '../../utils/validUser';
 import { signup } from '../../services/userService';
 import { errorMsg, sucessMsg } from '../../services/feedbackService';
+import { useNavigate } from 'react-router-dom';
+import { removeColon } from '../../utils/removeColon';
 
 interface SignupProps {}
 
 const Signup: FunctionComponent<SignupProps> = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState<ISignup>({
     first: '',
     middle: '',
@@ -38,12 +41,11 @@ const Signup: FunctionComponent<SignupProps> = () => {
     const user = validUser(newData);
     signup(user)
     .then((response) => {
-      console.log('success');
       sucessMsg(`${response.data.email} signup successfuly`);
+      navigate('/login');
     })
     .catch((error) => {
-      errorMsg(error.response.data);
-      console.error(error)
+      errorMsg(removeColon(error.response.data));
     });
   };
 

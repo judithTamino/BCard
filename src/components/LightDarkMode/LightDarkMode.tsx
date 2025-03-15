@@ -1,3 +1,4 @@
+import './LightDarkMode.css';
 import { FunctionComponent } from 'react';
 import useTheme from '../../context/ThemeContext';
 

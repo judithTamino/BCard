@@ -1,3 +1,15 @@
+.search-form,
+.serch-input {
+  background-color: var(--body-color);
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  padding-left: .8rem;
+  border-radius: 1rem;
+}
+
 .serch-input::placeholder {
   text-transform: capitalize;
 }
