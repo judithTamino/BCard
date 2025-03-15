@@ -3,27 +3,14 @@ import { FunctionComponent, useEffect } from 'react';
 import { getUser } from '../../services/userService';
 import { addDefaultImg } from '../../utils/addDefaultImg';
 import useUser from '../../context/UserContext';
-import { decodeToken } from '../../services/tokenService';
 
-interface ProfileImageProps {
-  decodedToken: any;
-}
+interface ProfileImageProps {}
 
-const ProfileImage: FunctionComponent<ProfileImageProps> = ({
-  decodedToken,
-}) => {
-  const { user, setUser } = useUser();
+const ProfileImage: FunctionComponent<ProfileImageProps> = () => {
+  const { user } = useUser();
 
-  useEffect(() => {
-    if (decodedToken !== null) {
-      getUser(decodedToken._id)
-        .then((response) => {
-          setUser(response.data);
-        })
-        .catch((error) => console.error(error));
-    }
-  }, []);
 
+ 
   return (
     <>
       {user === undefined ? null : (

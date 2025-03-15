@@ -1,10 +1,11 @@
-import { FunctionComponent, useEffect, useState } from 'react';
+import { FunctionComponent, use, useEffect, useState } from 'react';
 import { Card } from '../../interfaces/cards/Card';
 import { getAllCards } from '../../services/cardService';
 import BCard from '../../components/BCard/BCard';
 import './Home.css';
 import useSearch from '../../context/SearchContext';
 import Pagination from '../../components/Pagination/Pagination';
+import useUser from '../../context/UserContext';
 
 interface HomeProps {}
 
@@ -13,6 +14,7 @@ const Home: FunctionComponent<HomeProps> = () => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [cardsPerPage] = useState<number>(4);
   const { searchTerm } = useSearch();
+  const { user } = useUser();
 
   useEffect(() => {
     getAllCards()
@@ -49,7 +51,7 @@ const Home: FunctionComponent<HomeProps> = () => {
           <>
             <div className='home-cards grid'>
               {currentCards.map((card: Card) => (
-                <BCard key={card._id} card={card} />
+                <BCard key={card._id} card={card} likes={card.likes} />
               ))}
             </div>
             

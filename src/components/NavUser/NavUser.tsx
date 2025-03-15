@@ -39,7 +39,7 @@ const NavUser: FunctionComponent<NavUserProps> = () => {
           </li>
 
           <li className='nav-item'>
-            <NavLink className='nav-link' to={`/`} onClick={closeNav}>
+            <NavLink className='nav-link' to={`/fav`} onClick={closeNav}>
               Fav Cards
             </NavLink>
           </li>
@@ -74,7 +74,7 @@ const NavUser: FunctionComponent<NavUserProps> = () => {
       <div className='nav-actions'>
         <SearchInput />
         <LightDarkMode />
-        <ProfileImage decodedToken={decodedToken} />
+        <ProfileImage />
         <div className='nav-toggle' onClick={() => setShowNav(true)}>
           <i className='ri-menu-line'></i>
         </div>

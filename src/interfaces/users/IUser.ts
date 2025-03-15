@@ -3,6 +3,7 @@ import { IUserImage } from "./IUserImage";
 import { IUserName } from "./IUserName";
 
 export interface IUser {
+  _id?:string;
   name: IUserName;
   phone:string;
   email:string;

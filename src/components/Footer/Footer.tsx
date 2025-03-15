@@ -35,7 +35,7 @@ const Footer: FunctionComponent<FooterProps> = ({ isLoggedIn }) => {
                 <li>
                   <button
                     className='footer-link'
-                    onClick={() => navigate('/about')}
+                    onClick={() => navigate('/fav')}
                   >
                     Fav Cards
                   </button>

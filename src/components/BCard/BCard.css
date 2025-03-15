@@ -4,6 +4,7 @@
   justify-self: center;
   border-radius: 1rem;
   overflow: hidden;
+  position: relative;
 }
 
 .card-img {
@@ -24,7 +25,7 @@
 .card-subtitle {
   font-size: 1.8rem;
   margin-bottom: 3.2rem;
-  color: var( --text-color-light);
+  color: var(--text-color-light);
 }
 
 .card-details {
@@ -46,4 +47,12 @@
   margin-block: 12rem;
   font-weight: var(--font-semi-bold);
   color: var(--first-color-alt);
+}
+
+.fav-btn {
+  font-size: var(--h3-font-size);
+  color: var(--first-color);
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
 }
