@@ -16,6 +16,8 @@ import { UserProvider } from './context/UserContext';
 const About = lazy(() => import('./pages/About/About'));
 const Home = lazy(() => import('./pages/Home/Home'));
 const FavCards = lazy(() => import('./pages/FavCards/FavCards'));
+const CreateCard = lazy(() => import('./pages/CreateCard/CreateCard'));
+const MyCards = lazy(() => import('./pages/MyCards/MyCards'));
 const Signup = lazy(() => import('./pages/Signup/Signup'));
 const Login = lazy(() => import('./pages/Login/Login'));
 
@@ -63,6 +65,8 @@ function App() {
                   <Route path='/' element={<Home />} />
                   <Route path='/about' element={<About />} />
                   <Route path='/fav' element={<FavCards />} />
+                  <Route path='/createCard' element={<CreateCard />} />
+                  <Route path='/myCards' element={<MyCards />} />
                   <Route path='/signup' element={<Signup />} />
                   <Route path='/login' element={<Login />} />
                 </Routes>

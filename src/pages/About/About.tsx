@@ -68,12 +68,6 @@ const About: FunctionComponent<AboutProps> = () => {
             promote yourself with confidence.
           </p>
         </div>
-
-        <div className='about-btns grid'>
-          <button className='btn' onClick= { () =>navigate('/signup')}>Signup</button>
-          <span>or</span>
-          <button className='btn btn-secondary' onClick={() => navigate('/login')}>Login</button>
-        </div>
       </div>
     </section>
   );

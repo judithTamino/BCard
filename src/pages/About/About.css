@@ -36,23 +36,3 @@
   font-weight: var(--font-semi-bold);
   color: var(--first-color-alt);
 }
-
-.about-btns {
-  grid-template-columns: 2fr 1fr 2fr;
-  align-items: center;
-  justify-items: center;
-  margin-block: 3.2rem;
-}
-
-/*=============== BREAKPOINTS ===============*/
-/* for medium devices */
-@media screen and (min-width: 540px) {
-  .about-btns {
-    max-width: 500px;
-    justify-items: start;
-  }
-
-  .about-btns span {
-    justify-self: center;
-  }
-}

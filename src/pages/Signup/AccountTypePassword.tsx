@@ -2,6 +2,7 @@ import { FunctionComponent } from 'react';
 import { Formik, Form } from 'formik';
 // CSS
 import '../../components/Forms/Forms.css';
+import '../../css/btn.css';
 // Components
 import TextInput from '../../components/TextInput/TextInput';
 // Interface

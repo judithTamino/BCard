@@ -1,0 +1,76 @@
+.btn {
+  text-decoration: none;
+  background-color: var(--first-color);
+  padding: .4rem .8rem;
+  border-radius: .5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn:hover:not(:disabled),
+.btn:active:not(:disabled),
+.btn-secondary:hover,
+.btn-secondary:active {
+  transform: translate(0, -3px);
+  box-shadow: 0 2rem 8rem -1rem var(--first-color);
+}
+
+.btn:disabled {
+  background-color: var(--first-color-light);
+  color: var(--body-color);
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid var(--first-color);
+  color: var(--first-color);
+}
+
+.fav-btn {
+  font-size: var(--h3-font-size);
+  color: var(--first-color);
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  color: var(--first-color);
+}
+
+.btn-icon:hover {
+  background-color: var(--first-color-light);
+  box-shadow: none;
+}
+
+.btn-icon i {
+  font-size: var(--h3-font-size);
+}
+
+.btn-create {
+  width: 40px;
+  height: 40px;
+  background: var(--first-color);
+  color: #fff;
+  border-radius: 50%;
+  justify-content: center;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.btn-delete,
+.btn-edit {
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--first-color);
+}
+
+.btn-delete {
+  color: var(--error-color);
+}
+

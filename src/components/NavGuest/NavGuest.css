@@ -1,21 +1,6 @@
-.nav-btns,
-.btn-icon {
+.nav-btns {
   display: flex;
   align-items: center;
-}
-
-.btn-icon {
-  background-color: transparent;
-  color: var(--first-color);
-}
-
-.btn-icon:hover {
-  background-color: var(--first-color-light);
-  box-shadow: none;
-}
-
-.btn-icon i {
-  font-size: var(--h3-font-size);
 }
 
 .nav-btns {

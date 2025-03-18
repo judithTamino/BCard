@@ -46,36 +46,6 @@
   color: var(--text-color);
 }
 
-/*=============== BUTTONS ===============*/
-.btn {
-  text-decoration: none;
-  background-color: var(--first-color);
-  padding: .4rem .8rem;
-  border-radius: .5rem;
-  color: #fff;
-  cursor: pointer;
-}
-
-.btn:hover:not(:disabled),
-.btn:active:not(:disabled),
-.btn-secondary:hover,
-.btn-secondary:active {
-  transform: translate(0, -3px);
-  box-shadow: 0 2rem 8rem -1rem var(--first-color);
-}
-
-.btn:disabled {
-  background-color: var(--first-color-light);
-  color: var(--body-color);
-  cursor: not-allowed;
-}
-
-.btn-secondary {
-  background-color: transparent;
-  border: 2px solid var(--first-color);
-  color: var(--first-color);
-}
-
 /*=============== BREAKPOINTS ===============*/
 /* for large devices */
 @media screen and (min-width: 1050px) {

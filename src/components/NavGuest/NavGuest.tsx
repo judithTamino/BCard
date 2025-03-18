@@ -1,5 +1,6 @@
 import './NavGuest.css';
 import '../../css/Nav.css';
+import '../../css/btn.css';
 import LightDarkMode from '../LightDarkMode/LightDarkMode';
 import SearchInput from '../SearchInput/SearchInput';
 import { FunctionComponent, useState } from 'react';

@@ -13,7 +13,7 @@
 }
 
 .address-container {
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2fr 1.5fr;
   gap: .8rem;
 }
 
@@ -28,12 +28,6 @@
   grid-template-columns: repeat(2, max-content);
   justify-items: center;
   column-gap: 2.4rem;
-}
-
-.btn-back {
-  background-color: transparent;
-  border: 2px solid var(--first-color);
-  color: var(--first-color);
 }
 
 /*=============== BREAKPOINTS ===============*/

@@ -1,42 +1,36 @@
-import { FunctionComponent, use, useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import { Card } from '../../interfaces/cards/Card';
-import { getAllCards } from '../../services/cardService';
+import { getAllCards, likeUnlikeCard } from '../../services/cardService';
 import { errorMsg } from '../../services/feedbackService';
 import { removeColon } from '../../utils/removeColon';
 import useUser from '../../context/UserContext';
 import BCard from '../../components/BCard/BCard';
 
+
 interface FavCardsProps {}
 
 const FavCards: FunctionComponent<FavCardsProps> = () => {
-  const [cards, setCards] = useState<Card[]>([]);
   const { user } = useUser();
-  const favCards: Card[] = [];
-
+  const [cards, setCards] = useState<Card[]>([]);
+  const [isFav, setIsFav] = useState<boolean>(true);
+  
   useEffect(() => {
     getAllCards()
       .then((res) => {
         setCards(res.data);
       })
       .catch((error) => errorMsg(`${removeColon(error.response.data)}`));
-  }, []);
+  }, [cards]);
 
-  const filterFavCards = () => {
-    if (use !== undefined) {
-      for (let i = 0; i < cards.length; i++) {
-        const likes: string[] = cards[i].likes as string[];
 
-        for (let j = 0; j < likes.length; j++)
-          if (likes[j] === user._id) {
-            favCards.push(cards[i]);
-            break;
-          }
-      }
-    }
+  const handleLikeToggle = (cardId: string) => {
+    const token = sessionStorage.getItem('token');
+    likeUnlikeCard(cardId, token)
+      .then(() => {
+        setIsFav(!isFav);
+      })
+      .catch((error) => errorMsg(`${removeColon(error.response.data)}`));
   };
-
-  
-  filterFavCards();
 
   return (
     <section className='fav section'>
@@ -48,14 +42,20 @@ const FavCards: FunctionComponent<FavCardsProps> = () => {
           </p>
         </div>
 
-        {favCards.length > 0 ? (
-          <div className='fav-cards grid'>
-            {favCards.map((card:Card) => (
-              <BCard key={card._id} card={card} likes={card.likes} userId={user._id}/>
+        {cards.length > 0 ? (
+          <div className='cards-container grid'>
+            {cards.filter((card:Card) => card.likes?.some((like) => like === user._id)).map((card:Card) => (
+                    <BCard
+                    key={card._id}
+                    card={card}
+                    likes={card.likes}
+                    currentUserId={user._id}
+                    onLikeToggle={handleLikeToggle}
+                  />
             ))}
           </div>
         ) : (
-          <p className='home-not-found'>No Results Found</p>
+          <p className='home-not-found'>No Fav Found</p>
         )}
       </div>
     </section>

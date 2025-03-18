@@ -1,36 +1,21 @@
-import { FunctionComponent, use, useEffect, useState } from 'react';
+import '../../css/btn.css';
+import '../../css/card.css';
+
+import { FunctionComponent } from 'react';
 import { Card } from '../../interfaces/cards/Card';
-import './BCard.css';
 import { addDefaultImg } from '../../utils/addDefaultImg';
 import useAuto from '../../context/AuthContext';
-import { likeUnlikeCard } from '../../services/cardService';
-import { errorMsg } from '../../services/feedbackService';
-import { removeColon } from '../../utils/removeColon';
-import useUser from '../../context/UserContext';
 
 interface BCardProps {
   card: Card;
   likes: any;
+  currentUserId:string | undefined;
+  onLikeToggle: (cardId:string) => void;
 }
 
-const BCard: FunctionComponent<BCardProps> = ({ card, likes }) => {
+const BCard: FunctionComponent<BCardProps> = ({ card, likes, currentUserId, onLikeToggle }) => {
+  const isLiked = likes.includes(currentUserId);
   const { isLoggedIn } = useAuto();
-  const { user } = useUser();
-  const [isFav, setIsFav] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (isLoggedIn && user) {
-      setIsFav(likes.includes(user._id));
-    }
-  }, []);
-
-  const handleFavCard = (cardId: string) => {
-    likeUnlikeCard(cardId)
-      .then(() => {
-        setIsFav((prevCard) => !prevCard);
-      })
-      .catch((error) => errorMsg(`${removeColon(error.response.data)}`));
-  };
 
   return (
     <article className='card'>
@@ -45,21 +30,20 @@ const BCard: FunctionComponent<BCardProps> = ({ card, likes }) => {
         <h3 className='card-title'>{card.title}</h3>
         <p className='card-subtitle'>{card.subtitle}</p>
 
-        <ul className='card-details'>
-          <li className='card-list'>
-            <i className='ri-phone-fill'></i>
+        <ul className='card-list'>
+          <li className='card-item'>
+            <i className='ri-phone-line'></i>
             <span className='card-txt'>{card.phone}</span>
           </li>
 
-          <li className='card-list'>
-            <i className='ri-map-pin-2-fill'></i>
+          <li className='card-item'>
+            <i className='ri-map-pin-2-line'></i>
             <span className='card-txt'>
               {`${card.address.street} ${card.address.houseNumber} ${card.address.city}, ${card.address.country}`}
             </span>
           </li>
 
-          <li className='card-list'>
-            <i className='ri-hashtag'></i>
+          <li className='card-item'>
             <span className='card-txt'>{card.bizNumber}</span>
           </li>
         </ul>
@@ -68,9 +52,9 @@ const BCard: FunctionComponent<BCardProps> = ({ card, likes }) => {
       {isLoggedIn ? (
         <button
           className='fav-btn'
-          onClick={() => handleFavCard(card._id as string)}
+          onClick={() => onLikeToggle(card._id as string)}
         >
-          {!isFav ? (
+          {!isLiked? (
             <i className='ri-heart-line'></i>
           ) : (
             <i className='ri-heart-fill'></i>

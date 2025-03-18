@@ -1,38 +1,32 @@
-// CSS
-import './Forms.css';
+import '../../components/Forms/Forms.css';
 import '../../css/btn.css';
-
 import { FunctionComponent } from 'react';
+import { ICreateCard } from '../../interfaces/forms/ICreateCard';
 import { Formik, Form } from 'formik';
-// Components
-import TextInput from '../TextInput/TextInput';
-// Interface
-import { ISignup } from '../../interfaces/forms/ISignup';
+import TextInput from '../../components/TextInput/TextInput';
 
-interface FormAddressProps {
-  next: (newData: ISignup) => void;
-  prev: (newData: ISignup) => void;
-  data: ISignup;
+interface CardAddressProps {
+  next: (newCardData: ICreateCard, final: boolean) => void;
+  prev: (newCardData: ICreateCard) => void;
+  data: ICreateCard;
   schema: any;
 }
 
-const FormAddress: FunctionComponent<FormAddressProps> = ({
+const CardAddress: FunctionComponent<CardAddressProps> = ({
   next,
   prev,
   data,
   schema,
 }) => {
-  const handleSubmit = (values: ISignup) => {
-    next(values);
-  };
+  const handleSubmit = (values: ICreateCard) => next(values, true);
   return (
     <div className='form-container'>
       <h3 className='form-title'>Address</h3>
 
       <Formik
         initialValues={data}
-        validationSchema={schema}
         onSubmit={handleSubmit}
+        validationSchema={schema}
       >
         {({ values }) => (
           <Form>
@@ -98,14 +92,17 @@ const FormAddress: FunctionComponent<FormAddressProps> = ({
 
             <div className='form-btns-container grid'>
               <button
-                className='btn btn-back'
+                className='btn btn-secondary'
                 type='button'
                 onClick={() => prev(values)}
               >
                 Back
               </button>
-              <button className='btn' type='submit'>
-                next
+              <button
+                className='btn'
+                type='submit'
+              >
+                Create Card
               </button>
             </div>
           </Form>
@@ -115,4 +112,4 @@ const FormAddress: FunctionComponent<FormAddressProps> = ({
   );
 };
 
-export default FormAddress;
+export default CardAddress;

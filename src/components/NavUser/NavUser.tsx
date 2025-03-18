@@ -1,7 +1,7 @@
-import './NavUser.css';
+
 import '../../css/Nav.css';
 import { FunctionComponent, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import LightDarkMode from '../LightDarkMode/LightDarkMode';
 import SearchInput from '../SearchInput/SearchInput';
 import useAuto from '../../context/AuthContext';
@@ -12,6 +12,7 @@ import { decodeToken } from '../../services/tokenService';
 interface NavUserProps {}
 
 const NavUser: FunctionComponent<NavUserProps> = () => {
+  const navigate = useNavigate();
   const [showNav, setShowNav] = useState<boolean>(false);
   const { logout } = useAuto();
   const closeNav = () => setShowNav(false);
@@ -22,6 +23,8 @@ const NavUser: FunctionComponent<NavUserProps> = () => {
   const handleLogout = () => {
     sucessMsg('logged out successfuly');
     logout();
+    sessionStorage.removeItem('token');
+    navigate('/');
   };
 
   return (
@@ -46,7 +49,7 @@ const NavUser: FunctionComponent<NavUserProps> = () => {
 
           {decodedToken.isBusiness ? (
             <li className='nav-item'>
-              <NavLink className='nav-link' to={`/`} onClick={closeNav}>
+              <NavLink className='nav-link' to={`/myCards`} onClick={closeNav}>
                 My Cards
               </NavLink>
             </li>

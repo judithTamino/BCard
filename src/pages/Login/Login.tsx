@@ -1,41 +1,23 @@
 import '../../components/Forms/Forms.css';
 
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent } from 'react';
 import { Formik, Form } from 'formik';
 import { loginInitialValues } from '../../constants/loginInitialValues';
 import { loginShema } from '../../schemas/loginSchema';
 import TextInput from '../../components/TextInput/TextInput';
 import { ILogin } from '../../interfaces/forms/ILogin';
-import { getUser, userLogin } from '../../services/userService';
+import { userLogin } from '../../services/userService';
 import { useNavigate } from 'react-router-dom';
 import { errorMsg, sucessMsg } from '../../services/feedbackService';
 import './Login.css';
 import { removeColon } from '../../utils/removeColon';
 import useAuto from '../../context/AuthContext';
-import useUser from '../../context/UserContext';
-import { decodeToken } from '../../services/tokenService';
 
 interface LoginProps {}
 
 const Login: FunctionComponent<LoginProps> = () => {
-  const [userId, setUserId] = useState<any>('')
-  const { login, isLoggedIn } = useAuto();
-  const { setUser } = useUser();
+  const { login } = useAuto();
   const navigate = useNavigate();
- 
-
-  const handelGetUser = (userId: any) => {
-    if (isLoggedIn) {
-      console.log(userId);
-      getUser(userId)
-        .then((response) => {
-          setUser(response.data);
-        })
-        .catch((error) =>
-          errorMsg(`${removeColon(error.response.data)} ==> login page`)
-        );
-    }
-  };
 
   const handleSubmit = (values: ILogin) => {
     userLogin(values)
@@ -43,19 +25,12 @@ const Login: FunctionComponent<LoginProps> = () => {
         const userToken = response.data;
         // save token in session storage
         sessionStorage.setItem('token', userToken);
-
-        // decode token
-        const decodedToken = decodeToken(userToken) as any;
-        setUserId(decodedToken._id);
-
         login();
         sucessMsg('logged in successfully');
         navigate('/');
       })
       .catch((error) => errorMsg(removeColon(error.response.data)));
   };
-
-  handelGetUser(userId);
 
   return (
     <article className='login section'>

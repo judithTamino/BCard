@@ -18,7 +18,7 @@ export const userLogin = (user: ILogin) => {
 };
 
 // Get user by ID
-export const getUser = (id: string) => {
+export const getUser = (id: string, token:any) => {
   return axios.get(`${API}/${id}`, {
     headers: { 'x-auth-token': token },
   });

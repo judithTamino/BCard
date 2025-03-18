@@ -1,64 +1,54 @@
+import '../../components/Forms/Forms.css';
 import '../../css/btn.css';
-import './Forms.css';
-
 import { FunctionComponent } from 'react';
+import { ICreateCard } from '../../interfaces/forms/ICreateCard';
 import { Formik, Form } from 'formik';
-// Components
-import TextInput from '../TextInput/TextInput';
-// Interface
-import { ISignup } from '../../interfaces/forms/ISignup';
+import TextInput from '../../components/TextInput/TextInput';
 
-interface FormImageProps {
-  data: ISignup;
-  next: (newData: ISignup) => void;
-  prev: (newData:ISignup) => void;
+interface CardImageProps {
+  next: (newCardData: ICreateCard) => void;
+  prev: (newCardData: ICreateCard) => void;
+  data: ICreateCard;
   schema: any;
 }
 
-const FormImage: FunctionComponent<FormImageProps> = ({
-  data,
-  next,
-  prev,
-  schema,
-}) => {
-  const handleSubmit = (values: ISignup) => {
-    next(values);
-  };
-
+const CardImage: FunctionComponent<CardImageProps> = ({next, prev, data, schema}) => {
+  const handleSubmit = (values: ICreateCard) => next(values);
   return (
     <div className='form-container'>
-      <h3 className='form-title'>Upload Image</h3>
+      <h3 className='form-title'>Image</h3>
 
       <Formik
         initialValues={data}
-        validationSchema={schema}
         onSubmit={handleSubmit}
+        validationSchema={schema}
       >
         {({ values }) => (
           <Form>
             <div className='form-data'>
               <div className='input-group'>
+         
                 <TextInput
-                  label='Url'
-                  name='image-url'
+                  label='Image URL'
+                  name='image_url'
                   type='text'
-                  required={false}
+                  required={true}
                 />
               </div>
 
               <div className='input-group'>
                 <TextInput
                   label='Description'
-                  name='image-alt'
+                  name='image_alt'
                   type='text'
-                  required={false}
+                  required={true}
                 />
               </div>
             </div>
 
             <div className='form-btns-container grid'>
               <button
-                className='btn btn-back'
+                className='btn btn-secondary'
                 type='button'
                 onClick={() => prev(values)}
               >
@@ -75,4 +65,4 @@ const FormImage: FunctionComponent<FormImageProps> = ({
   );
 };
 
-export default FormImage;
+export default CardImage;
