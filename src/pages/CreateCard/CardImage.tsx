@@ -14,12 +14,14 @@ interface CardImageProps {
 
 const CardImage: FunctionComponent<CardImageProps> = ({next, prev, data, schema}) => {
   const handleSubmit = (values: ICreateCard) => next(values);
+
   return (
     <div className='form-container'>
       <h3 className='form-title'>Image</h3>
 
       <Formik
         initialValues={data}
+        enableReinitialize={true}
         onSubmit={handleSubmit}
         validationSchema={schema}
       >
@@ -27,7 +29,6 @@ const CardImage: FunctionComponent<CardImageProps> = ({next, prev, data, schema}
           <Form>
             <div className='form-data'>
               <div className='input-group'>
-         
                 <TextInput
                   label='Image URL'
                   name='image_url'

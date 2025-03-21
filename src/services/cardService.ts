@@ -40,3 +40,20 @@ export function deleteCard(cardId: string) {
     headers: { 'x-auth-token': sessionStorage.getItem('token') },
   });
 }
+
+// Get card by id
+export function getCardById(cardId: string) {
+  return axios.get(`${API}/${cardId}`, {
+    headers: { 'x-auth-token': sessionStorage.getItem('token') },
+  });
+}
+
+// Update card
+export function updateCard(cardId: string, card:Card) {
+  return axios.put(
+    `${API}/${cardId}`,card,
+    {
+      headers: { 'x-auth-token': sessionStorage.getItem('token') },
+    }
+  );
+}

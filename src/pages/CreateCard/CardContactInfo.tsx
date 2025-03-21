@@ -24,6 +24,7 @@ const CardContactInfo: FunctionComponent<CardContactInfoProps> = ({
       <h3 className='form-title'>Contact Information</h3>
       <Formik
         initialValues={data}
+        enableReinitialize={true}
         onSubmit={handleSubmit}
         validationSchema={schema}
       >

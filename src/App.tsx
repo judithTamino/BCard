@@ -20,6 +20,7 @@ const CreateCard = lazy(() => import('./pages/CreateCard/CreateCard'));
 const MyCards = lazy(() => import('./pages/MyCards/MyCards'));
 const Signup = lazy(() => import('./pages/Signup/Signup'));
 const Login = lazy(() => import('./pages/Login/Login'));
+const EditCard = lazy(() => import('./pages/EditCard/EditCard'));
 
 function App() {
   const [theme, setTheme] = useState<Theme>('light');
@@ -69,6 +70,7 @@ function App() {
                   <Route path='/myCards' element={<MyCards />} />
                   <Route path='/signup' element={<Signup />} />
                   <Route path='/login' element={<Login />} />
+                  <Route path='/edit/:id' element={<EditCard />} />
                 </Routes>
                 <Footer isLoggedIn={isLoggedIn} />
               </Router>

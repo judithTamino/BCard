@@ -7,19 +7,16 @@ import { deleteCard, getAllMyCards } from '../../services/cardService';
 import { errorMsg, sucessMsg } from '../../services/feedbackService';
 import { addDefaultImg } from '../../utils/addDefaultImg';
 import { removeColon } from '../../utils/removeColon';
+import { useNavigate } from 'react-router-dom';
 
 interface MyCardsProps {}
 
 const MyCards: FunctionComponent<MyCardsProps> = () => {
+  const navigate = useNavigate();
   const [myCards, setMyCards] = useState<Card[]>([]);
- 
+
   useEffect(() => {
     handleGetAllMyCards();
-    // getAllMyCards()
-    //   .then((res) => {
-    //     setMyCards(res.data);
-    //   })
-    //   .catch((error) => errorMsg(`${error.response.data}`));
   }, []);
 
   const handleDeleteCard = (cardId: any) => {
@@ -33,11 +30,11 @@ const MyCards: FunctionComponent<MyCardsProps> = () => {
 
   const handleGetAllMyCards = () => {
     getAllMyCards()
-    .then((res) => {
-      setMyCards(res.data);
-    })
-    .catch((error) => errorMsg(`${error.response.data}`));
-  }
+      .then((res) => {
+        setMyCards(res.data);
+      })
+      .catch((error) => errorMsg(`${error.response.data}`));
+  };
 
   return (
     <section className='cards section'>
@@ -83,13 +80,18 @@ const MyCards: FunctionComponent<MyCardsProps> = () => {
                 <ul className='card-actions'>
                   <li
                     className='card-action'
-                    onClick={ () => handleDeleteCard(card._id)}
+                    onClick={() => handleDeleteCard(card._id)}
                   >
                     <i className='ri-delete-bin-6-line btn-delete'></i>
                   </li>
 
                   <li className='card-action'>
-                    <i className='ri-pencil-line btn-edit'></i>
+                    <i
+                      className='ri-pencil-line btn-edit'
+                      onClick={() => {
+                        navigate(`/edit/${card._id}`);
+                      }}
+                    ></i>
                   </li>
                 </ul>
               </article>

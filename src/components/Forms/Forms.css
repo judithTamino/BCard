@@ -30,10 +30,15 @@
   column-gap: 2.4rem;
 }
 
+.form-btns {
+  max-width: 500px;
+}
+
 /*=============== BREAKPOINTS ===============*/
 /* for medium devices */
 @media screen and (min-width: 540px) {
-  .form-container {
+  .form-container,
+  .form-btns {
     margin-inline: auto;
   }
 

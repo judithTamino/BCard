@@ -10,6 +10,7 @@ interface CardAddressProps {
   prev: (newCardData: ICreateCard) => void;
   data: ICreateCard;
   schema: any;
+  isCreate: boolean;
 }
 
 const CardAddress: FunctionComponent<CardAddressProps> = ({
@@ -17,6 +18,7 @@ const CardAddress: FunctionComponent<CardAddressProps> = ({
   prev,
   data,
   schema,
+  isCreate,
 }) => {
   const handleSubmit = (values: ICreateCard) => next(values, true);
   return (
@@ -25,6 +27,7 @@ const CardAddress: FunctionComponent<CardAddressProps> = ({
 
       <Formik
         initialValues={data}
+        enableReinitialize={true}
         onSubmit={handleSubmit}
         validationSchema={schema}
       >
@@ -98,11 +101,8 @@ const CardAddress: FunctionComponent<CardAddressProps> = ({
               >
                 Back
               </button>
-              <button
-                className='btn'
-                type='submit'
-              >
-                Create Card
+              <button className='btn' type='submit'>
+                {isCreate ? 'Create Card' : 'Update Card'}
               </button>
             </div>
           </Form>

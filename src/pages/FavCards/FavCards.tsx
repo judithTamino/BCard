@@ -5,6 +5,7 @@ import { errorMsg } from '../../services/feedbackService';
 import { removeColon } from '../../utils/removeColon';
 import useUser from '../../context/UserContext';
 import BCard from '../../components/BCard/BCard';
+import useSearch from '../../context/SearchContext';
 
 
 interface FavCardsProps {}
@@ -13,6 +14,7 @@ const FavCards: FunctionComponent<FavCardsProps> = () => {
   const { user } = useUser();
   const [cards, setCards] = useState<Card[]>([]);
   const [isFav, setIsFav] = useState<boolean>(true);
+  const { searchTerm } = useSearch();
   
   useEffect(() => {
     getAllCards()
@@ -31,6 +33,8 @@ const FavCards: FunctionComponent<FavCardsProps> = () => {
       })
       .catch((error) => errorMsg(`${removeColon(error.response.data)}`));
   };
+
+  
 
   return (
     <section className='fav section'>

@@ -6,7 +6,6 @@ import { Formik, Form } from 'formik';
 import TextInput from '../../components/TextInput/TextInput';
 import TextareaInput from '../../components/TextareaInput/TextareaInput';
 
-
 interface CardBasicInfoProps {
   next: (newCardData: ICreateCard) => void;
   data: ICreateCard;
@@ -19,11 +18,13 @@ const CardBasicInfo: FunctionComponent<CardBasicInfoProps> = ({
   schema,
 }) => {
   const handleSubmit = (values: ICreateCard) => next(values);
+
   return (
     <div className='form-container'>
       <h3 className='form-title'>Title & Description</h3>
       <Formik
         initialValues={data}
+        enableReinitialize={true}
         onSubmit={handleSubmit}
         validationSchema={schema}
       >
@@ -58,10 +59,7 @@ const CardBasicInfo: FunctionComponent<CardBasicInfoProps> = ({
             </div>
 
             <div className='form-btns-container grid'>
-              <button
-                className='btn btn-next'
-                type='submit'
-              >
+              <button className='btn btn-next' type='submit'>
                 Next
               </button>
             </div>

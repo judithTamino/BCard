@@ -55,6 +55,7 @@ const CreateCrad: FunctionComponent<CreateCradProps> = () => {
       prev={handlePrevStep}
       data={cardData}
       schema={cardSchema[currentStep]}
+      isCreate={true}
     />,
   ];
 
@@ -63,7 +64,7 @@ const CreateCrad: FunctionComponent<CreateCradProps> = () => {
 
     if (final) {
       createCard(newCardData);
-      navigate('/');
+      navigate('/myCards');
       return;
     }
     setCurrentStep((prev) => prev + 1);
@@ -82,7 +83,6 @@ const CreateCrad: FunctionComponent<CreateCradProps> = () => {
         sucessMsg('card create successfully');
       })
       .catch((error) => {
-        console.log(error)
         if (error.response.data.includes('E11000')) errorMsg('Email already exists!');
         else errorMsg(`${removeColon(error.response.data)}`);
       });
