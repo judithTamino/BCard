@@ -15,7 +15,7 @@ const FavCards: FunctionComponent<FavCardsProps> = () => {
   const [cards, setCards] = useState<Card[]>([]);
   const [isFav, setIsFav] = useState<boolean>(true);
   const { searchTerm } = useSearch();
-  
+
   useEffect(() => {
     getAllCards()
       .then((res) => {
@@ -23,7 +23,6 @@ const FavCards: FunctionComponent<FavCardsProps> = () => {
       })
       .catch((error) => errorMsg(`${removeColon(error.response.data)}`));
   }, [cards]);
-
 
   const handleLikeToggle = (cardId: string) => {
     const token = sessionStorage.getItem('token');
@@ -34,7 +33,9 @@ const FavCards: FunctionComponent<FavCardsProps> = () => {
       .catch((error) => errorMsg(`${removeColon(error.response.data)}`));
   };
 
-  
+  const filterCards = cards.filter((card) =>
+    card.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
+  );
 
   return (
     <section className='fav section'>
@@ -46,17 +47,21 @@ const FavCards: FunctionComponent<FavCardsProps> = () => {
           </p>
         </div>
 
-        {cards.length > 0 ? (
+        {filterCards.length > 0 ? (
           <div className='cards-container grid'>
-            {cards.filter((card:Card) => card.likes?.some((like) => like === user._id)).map((card:Card) => (
-                    <BCard
-                    key={card._id}
-                    card={card}
-                    likes={card.likes}
-                    currentUserId={user._id}
-                    onLikeToggle={handleLikeToggle}
-                  />
-            ))}
+            {filterCards
+              .filter((card: Card) =>
+                card.likes?.some((like) => like === user._id)
+              )
+              .map((card: Card) => (
+                <BCard
+                  key={card._id}
+                  card={card}
+                  likes={card.likes}
+                  currentUserId={user._id}
+                  onLikeToggle={handleLikeToggle}
+                />
+              ))}
           </div>
         ) : (
           <p className='home-not-found'>No Fav Found</p>

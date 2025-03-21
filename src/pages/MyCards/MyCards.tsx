@@ -8,12 +8,14 @@ import { errorMsg, sucessMsg } from '../../services/feedbackService';
 import { addDefaultImg } from '../../utils/addDefaultImg';
 import { removeColon } from '../../utils/removeColon';
 import { useNavigate } from 'react-router-dom';
+import useSearch from '../../context/SearchContext';
 
 interface MyCardsProps {}
 
 const MyCards: FunctionComponent<MyCardsProps> = () => {
   const navigate = useNavigate();
   const [myCards, setMyCards] = useState<Card[]>([]);
+  const { searchTerm } = useSearch();
 
   useEffect(() => {
     handleGetAllMyCards();
@@ -36,6 +38,10 @@ const MyCards: FunctionComponent<MyCardsProps> = () => {
       .catch((error) => errorMsg(`${error.response.data}`));
   };
 
+  const filterCards = myCards.filter((card) =>
+    card.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
+  );
+
   return (
     <section className='cards section'>
       <div className='container'>
@@ -43,9 +49,9 @@ const MyCards: FunctionComponent<MyCardsProps> = () => {
           <h2 className='section-title'>My Cards</h2>
           <p className='section-subtitle'>Here you can see all your cards.</p>
         </div>
-        {myCards.length > 0 ? (
+        {filterCards.length > 0 ? (
           <div className='cards-container grid'>
-            {myCards.map((card: Card) => (
+            {filterCards.map((card: Card) => (
               <article className='card' key={card._id}>
                 <img
                   src={card.image.url}
@@ -100,6 +106,13 @@ const MyCards: FunctionComponent<MyCardsProps> = () => {
         ) : (
           <p className='home-not-found'>No Cards Found</p>
         )}
+
+        <button className='btn-icon btn-create'>
+          <i
+            className='ri-add-line'
+            onClick={() => navigate('/createCard')}
+          ></i>
+        </button>
       </div>
     </section>
   );
