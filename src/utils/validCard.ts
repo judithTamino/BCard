@@ -10,8 +10,8 @@ export const validCard = (cardData:ICreateCard) : Card => {
     email:cardData.email,
     web:cardData.web,
     image: {
-      url:cardData.image_url,
-      alt:cardData.image_alt
+      url:cardData.image_url as string,
+      alt:cardData.image_alt as string
     },
     address: {
       state:cardData.state,

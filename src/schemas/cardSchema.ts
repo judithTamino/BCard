@@ -40,10 +40,10 @@ export const cardSchema = [
       .matches(
       /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp|svg|bmp|tiff|ico))(\?.*)?$/i,
         'web must be a standard URL with an image format (.png/.jpg/.gif/ext...)'
-      ),
+      ).required('image URL is required'),
     image_alt: Yup.string()
       .min(2, 'image description field should be more than 2 characters')
-      .max(256, 'image description field should be less than 256 characters'),
+      .max(256, 'image description field should be less than 256 characters').required('image description is required'),
   }),
   addressSchema,
 ];

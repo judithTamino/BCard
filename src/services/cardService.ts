@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { Card } from '../interfaces/cards/Card';
 
-const API: string =
-  'https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards';
+const API: string = import.meta.env.VITE_CARDS_API;
 
 // Get All Cards
 export function getAllCards() {

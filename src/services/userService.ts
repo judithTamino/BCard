@@ -2,10 +2,7 @@ import axios from 'axios';
 import { IUser } from '../interfaces/users/IUser';
 import { ILogin } from '../interfaces/forms/ILogin';
 
-const API: string =
-  'https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users';
-
-const token: any = sessionStorage.getItem('token');
+const API: string = import.meta.env.VITE_USERS_API;
 
 // Signup new user
 export function signup(user: IUser) {

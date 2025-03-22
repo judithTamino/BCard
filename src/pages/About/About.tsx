@@ -1,13 +1,11 @@
 import { FunctionComponent } from 'react';
 import './About.css';
 import useTheme from '../../context/ThemeContext';
-import { useNavigate } from 'react-router-dom';
 
 interface AboutProps {}
 
 const About: FunctionComponent<AboutProps> = () => {
   const { theme } = useTheme();
-  const navigate = useNavigate();
   return (
     <section className='about section'>
       <div className='about-container container grid'>
