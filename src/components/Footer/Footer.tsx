@@ -45,7 +45,7 @@ const Footer: FunctionComponent<FooterProps> = ({ isLoggedIn }) => {
                     {user.isBusiness ? (
                       <button
                         className='footer-link'
-                        onClick={() => navigate('/about')}
+                        onClick={() => navigate('/myCards')}
                       >
                         My Cards
                       </button>

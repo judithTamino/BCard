@@ -12,6 +12,7 @@ import { AutoProvider } from './context/AuthContext';
 import NavUser from './components/NavUser/NavUser';
 import { IUser } from './interfaces/users/IUser';
 import { UserProvider } from './context/UserContext';
+import BusinessCard from './pages/BusinessCard/BusinessCard';
 
 const About = lazy(() => import('./pages/About/About'));
 const Home = lazy(() => import('./pages/Home/Home'));
@@ -63,7 +64,11 @@ function App() {
                   {isLoggedIn ? <NavUser /> : <NavGuest />}
                 </header>
                 <Routes>
-                  <Route path='/' element={<Home />} />
+                  <Route path='/'>
+                    <Route index element={<Home />} />
+                    <Route path=':id' element={<BusinessCard/>} />
+                  </Route>
+                  {/* <Route path='/' element={<Home />} /> */}
                   <Route path='/about' element={<About />} />
                   <Route path='/fav' element={<FavCards />} />
                   <Route path='/createCard' element={<CreateCard />} />

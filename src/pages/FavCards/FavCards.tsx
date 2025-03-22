@@ -6,20 +6,24 @@ import { removeColon } from '../../utils/removeColon';
 import useUser from '../../context/UserContext';
 import BCard from '../../components/BCard/BCard';
 import useSearch from '../../context/SearchContext';
-
+import Spinner from '../../components/Spinner/Spinner';
+import { useNavigate } from 'react-router-dom';
 
 interface FavCardsProps {}
 
 const FavCards: FunctionComponent<FavCardsProps> = () => {
+  const navigate = useNavigate();
   const { user } = useUser();
   const [cards, setCards] = useState<Card[]>([]);
   const [isFav, setIsFav] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const { searchTerm } = useSearch();
 
   useEffect(() => {
     getAllCards()
       .then((res) => {
         setCards(res.data);
+        setLoading(false);
       })
       .catch((error) => errorMsg(`${removeColon(error.response.data)}`));
   }, [cards]);
@@ -37,6 +41,10 @@ const FavCards: FunctionComponent<FavCardsProps> = () => {
     card.title.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
   );
 
+  const handleCardOnClick = (cardId:string) => {
+    navigate(`/${cardId}`);
+  }
+
   return (
     <section className='fav section'>
       <div className='fav-container container'>
@@ -46,25 +54,33 @@ const FavCards: FunctionComponent<FavCardsProps> = () => {
             Here you can see all your liked cards.
           </p>
         </div>
-
-        {filterCards.length > 0 ? (
-          <div className='cards-container grid'>
-            {filterCards
-              .filter((card: Card) =>
-                card.likes?.some((like) => like === user._id)
-              )
-              .map((card: Card) => (
-                <BCard
-                  key={card._id}
-                  card={card}
-                  likes={card.likes}
-                  currentUserId={user._id}
-                  onLikeToggle={handleLikeToggle}
-                />
-              ))}
-          </div>
+        {loading ? (
+          <Spinner />
         ) : (
-          <p className='home-not-found'>No Fav Found</p>
+          <>
+            {filterCards.filter((card: Card) =>
+              card.likes?.some((like) => like === user._id)
+            ).length > 0 ? (
+              <div className='cards-container grid'>
+                {filterCards
+                  .filter((card: Card) =>
+                    card.likes?.some((like) => like === user._id)
+                  )
+                  .map((card: Card) => (
+                    <BCard
+                      key={card._id}
+                      card={card}
+                      likes={card.likes}
+                      currentUserId={user._id}
+                      onLikeToggle={handleLikeToggle}
+                      cardClik={handleCardOnClick}
+                    />
+                  ))}
+              </div>
+            ) : (
+              <p className='home-not-found'>No Fav Found</p>
+            )}
+          </>
         )}
       </div>
     </section>

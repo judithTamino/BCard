@@ -11,15 +11,16 @@ interface BCardProps {
   likes: any;
   currentUserId:string | undefined;
   onLikeToggle: (cardId:string) => void;
+  cardClik: (cardId:string) => void
 }
 
-const BCard: FunctionComponent<BCardProps> = ({ card, likes, currentUserId, onLikeToggle }) => {
+const BCard: FunctionComponent<BCardProps> = ({ card, likes, currentUserId, onLikeToggle, cardClik }) => {
   const isLiked = likes.includes(currentUserId);
   const { isLoggedIn } = useAuto();
 
   return (
     <article className='card'>
-      <img
+      <img onClick={() => cardClik(card._id as string)}
         src={card.image.url}
         alt={card.image.alt}
         className='card-img'

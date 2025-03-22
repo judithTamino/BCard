@@ -30,7 +30,7 @@ const NavUser: FunctionComponent<NavUserProps> = () => {
   return (
     <nav className='nav container'>
       <NavLink className='nav-logo' to='/'>
-        BCard
+        BC<span>ard</span> 
       </NavLink>
 
       <div className={`nav-menu ${showNav && 'show-menu'}`}>
